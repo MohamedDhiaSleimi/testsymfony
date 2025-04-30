@@ -1,0 +1,11 @@
+<h1>Liste des recettes</h1>
+<a href="{{ path('recette_ajout') }}">Ajouter une recette</a>
+<ul>
+    {% for recette in recettes %}
+        <li>
+            <strong>{{ recette.nom }}</strong> ({{ recette.type }})<br>
+            <a href="{{ path('recette_detail', {id: recette.id}) }}">Détail</a> |
+            <a href="{{ path('recette_suppression', {id: recette.id}) }}">Supprimer</a>
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,8 @@
+<h1>{{ nom }}</h1>
+<ul>
+    {% for ingredient, index in ingredients|keys %}
+        <li>{{ ingredients[index] }} : {{ quantites[index] }}</li>
+    {% endfor %}
+</ul>
+
+<a href="{{ path('affichage') }}">Retour à l'affichage</a>
