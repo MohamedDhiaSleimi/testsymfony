@@ -1,6 +1,16 @@
-<h1>Ajouter une recette</h1>
-{{ form_start(form) }}
-{{ form_widget(form) }}
-<button type="submit">Ajouter</button>
-{{ form_end(form) }}
-<a href="{{ path('recette_liste') }}">Retour à la liste</a>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<h1>Ajouter une recette</h1>
+	<div class="container py-5">
+		<div class="row justify-content-center">
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button type="submit" class="btn btn-primary">Ajouter</button>
+			{{ form_end(form) }}
+			<div class="mb-3">
+				<a href="{{ path('recette_liste') }}">Retour à la liste</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
