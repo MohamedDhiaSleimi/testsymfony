@@ -55,9 +55,23 @@ class RecetteController extends AbstractController {
             'form' => $form->createView(),
         ] );
     }
-
+    #[Route('/detail/{id}', name: 'recette_detail')]
+    public function detail(Recette $recette): Response
+    {
+        return $this->render('detail.html.twig', [
+            'recette' => $recette,
+        ]);
+    }
+    
+    #[Route('/suppression/{id}', name: 'recette_suppression')]
+    public function supprimer(Recette $recette, EntityManagerInterface $em): Response
+    {
+        $em->remove($recette);
+        $em->flush();
+        return $this->redirectToRoute('recette_liste');
+    }
+    
     #[ Route( '/liste', name: 'recette_liste' ) ]
-
     public function lister( RecetteRepository $recetteRepo ): Response {
         $recettes = $recetteRepo->findAll();
         return $this->render( 'liste.html.twig', [
